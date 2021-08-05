@@ -1,6 +1,6 @@
 <?php
 require_once( dirname( __DIR__ ) . '/gp-woocommerce-plugin.php' );
-
+require_once( dirname( __FILE__ ) . '/pg-woocommerce-utils.php' );
 global $wpdb;
 
 define('GP_TABLE_NAME', $wpdb->prefix . 'gp_wc_plugin');
@@ -101,7 +101,14 @@ class GP_WC_Helper
             'customer_phone'       => $order_data['billing']['phone'],
             'customer_email'       => $order_data['billing']['email'],
             'user_id'              => $uid,
-            'vat'                  => $vat
+            'vat'                  => $vat,
+            'billing_address'  => array(
+                'street'               => $order_data['billing']['address_1'],
+                'city'                 => $order_data['billing']['city'],
+                'country'              => PG_WC_Utils::get_convert_country($order_data['billing']['country']),
+                'state'                => $order_data['billing']['state'],
+                'zip'                  => $order_data['billing']['postcode'],
+            )
         );
 
         return $parametersArgs;
