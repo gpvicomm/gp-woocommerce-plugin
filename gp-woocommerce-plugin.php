@@ -59,7 +59,6 @@ if (!function_exists('gp_woocommerce_plugin')) {
 
             public function __construct() {
                 $this->id                 = 'gp_woocommerce';
-                $this->icon               = apply_filters('woocomerce_pg_icon', plugins_url('/assets/imgs/payment_checkout.svg', __FILE__));
                 $this->method_title       = GP_FLAVOR;
                 $this->method_description = __('This module is a solution that allows WooCommerce users to easily process credit card payments. Developed by: ', 'gp_woocommerce').GP_FLAVOR;
                 $this->supports           = array( 'products', 'refunds' );
@@ -96,10 +95,8 @@ if (!function_exists('gp_woocommerce_plugin')) {
             }
 
             function admin_options() {
-                $logo = plugins_url('/assets/imgs/payment.png', __FILE__);
                 ?>
                 <p>
-                    <img style='width: 30%;position: relative;display: inherit;'src='<?php echo $logo;?>'>
                 </p>
                 <h2><?php echo GP_FLAVOR.' Gateway'; ?></h2>
                 <table class="form-table">
