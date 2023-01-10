@@ -269,8 +269,7 @@ class PG_WC_Utils
     }
 
     public static function get_enable_installments_app($environment, $auth_token){
-        // $url_commerce = ($environment == 'yes') ? 'https://ccapi-stg.'.GP_DOMAIN.GP_COMMERCE : 'https://ccapi.'.GP_DOMAIN.GP_COMMERCE;
-        $url_commerce = ($environment == 'yes') ? 'http://127.0.0.1:8001'.GP_COMMERCE : 'https://ccapi.'.GP_DOMAIN.GP_COMMERCE;
+        $url_commerce = ($environment == 'yes') ? 'https://ccapi-stg.'.GP_DOMAIN.GP_COMMERCE : 'https://ccapi.'.GP_DOMAIN.GP_COMMERCE;
         $ch = curl_init($url_commerce);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
