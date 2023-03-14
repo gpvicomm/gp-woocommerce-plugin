@@ -233,32 +233,29 @@ class GP_WC_Helper
      * @param string $enable_installments
      * @return void
      */
-    public static function get_installments_type($enable_installments)
+    public static function get_installments_type($enable_installments, $environment, $card_button_text)
     {
-        $installments_options = [
-            2 => __('Deferred with interest', 'gp_woocommerce'),
-            3 => __('Deferred without interest', 'gp_woocommerce'),
-            9 => __('Deferred without interest and months of grace', 'gp_woocommerce')
-        ];
+        // to uncomment
+        $auth_token = GP_WC_Helper::generate_auth_token('client');
+        $commerce_data = PG_WC_Utils::get_enable_installments_app($environment, $auth_token);
+        $installments_options_app = $commerce_data['installments_options'];
+        $enable_installments_app = filter_var($commerce_data['enable_installments'], FILTER_VALIDATE_BOOLEAN)
         ?>
-        <div class="select" id="installments_div">
-            <select name="installments_type" id="installments_type">
-                <option selected disabled><?php _e('Installments Type', 'gp_woocommerce'); ?>:</option>
-                <option value=-1><?php _e('Without Installments', 'gp_woocommerce'); ?></option>
-                <?php
-                if ($enable_installments == 'yes')
-                {
-                    foreach($installments_options as $value => $text)
-                    {
-                        ?>
-                        <option value=<?php echo $value;?>><?php echo $text; ?></option>
-                        <?php
-                    }
-                }
-                ?>
-            </select>
-            <br><br>
-        </div>
+        <?php
+        if ($enable_installments_app and in_array('3', array_keys($commerce_data['installments_options']))){
+            $enable_installments ='yes';
+            $installments_options = 3;
+            $card_button_text = __('Deferred without interest', 'gp_woocommerce');
+        }else{
+            $enable_installments = 'no';
+            $installments_options = -1;
+        }
+        ?>
+        <button id="checkout-button"
+            class="js-payment-checkout"
+            installments_type_commerce=<?php echo $installments_options; ?>>
+            <?php echo $card_button_text; ?>
+        </button>
         <?php
     }
 }

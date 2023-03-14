@@ -15,6 +15,9 @@ The documentation necessary to install and configure Wordpress is at the followi
 
 https://wordpress.org/support/article/how-to-install-wordpress/
 
+Supported Versions
+5.6 - 6.1.1
+
 All the minimum requirements (PHP and MySQL) must be fulfilled so that the developed plugin can work correctly.
 
 ### 1.3.- WooCommerce
