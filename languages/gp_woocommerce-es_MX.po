@@ -165,9 +165,9 @@ msgstr ""
 msgid "Deferred with interest"
 msgstr "Diferido con intereses"
 
-#: includes/gp-woocommerce-helper.php:233
-msgid "Deferred without interest"
-msgstr "Diferido sin intereses"
+#: includes/gp-woocommerce-helper.php:248
+msgid "Pay MSI"
+msgstr "Pagar a MSI"
 
 #: includes/gp-woocommerce-helper.php:234
 msgid "Deferred without interest and months of grace"

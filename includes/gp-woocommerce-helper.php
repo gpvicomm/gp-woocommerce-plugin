@@ -245,7 +245,7 @@ class GP_WC_Helper
         if ($enable_installments_app and in_array('3', array_keys($commerce_data['installments_options']))){
             $enable_installments ='yes';
             $installments_options = 3;
-            $card_button_text = __('Deferred without interest', 'gp_woocommerce');
+            $card_button_text = __('Pagar a MSI', 'gp_woocommerce');
         }else{
             $enable_installments = 'no';
             $installments_options = -1;
