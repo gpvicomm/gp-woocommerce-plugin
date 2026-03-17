@@ -87,7 +87,7 @@ class GP_WC_Helper
         }
 
         if (is_null($order_data['customer_id']) or empty($order_data['customer_id'])) {
-            $uid = $order->id;
+            $uid = $order->get_id();
         } else {
             $uid = $order_data['customer_id'];
         }
@@ -129,13 +129,13 @@ class GP_WC_Helper
 
         $data = [
             'user' => [
-                'id'=> $checkout_data['user_id'],
+                'id'=> strval($checkout_data['user_id']),
                 'name'=> $order->get_billing_first_name(),
                 'last_name'=> $order->get_billing_last_name(),
                 'email'=> $checkout_data['customer_email'],
             ],
             'order' => [
-                'dev_reference' => $checkout_data['purchase_order_id'],
+                'dev_reference' => strval($checkout_data['purchase_order_id']),
                 'description' => $checkout_data['purchase_description'],
                 'amount' => $checkout_data['purchase_amount'],
                 'installments_type' => -1,

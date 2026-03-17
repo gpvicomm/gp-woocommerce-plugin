@@ -4,7 +4,7 @@
 Plugin Name: GpViComm WooCommerce Plugin
 Plugin URI: https://www.gpvicomm.com
 Description: This module is a solution that allows Woocommerce users to easily process credit card payments.
-Version: 2.3.0
+Version: 2.3.2
 Author: GpViComm
 Author URI: https://developers.gpvicomm.com/docs/payments/
 Text Domain: gp_woocommerce
@@ -188,9 +188,9 @@ if (!function_exists('gp_woocommerce_plugin')) {
                 ?>
 
 
-                <div id="order_data" class="hide">
-                    <?php echo json_encode($order_data); ?>
-                </div>
+               <div id="order_data" class="hide">
+                <?php echo htmlspecialchars(wp_json_encode($order_data), ENT_QUOTES, 'UTF-8'); ?>
+               </div>
 
                 <script id="woocommerce_checkout_sg"
                         webhook_p="<?php echo $webhook_p; ?>"
